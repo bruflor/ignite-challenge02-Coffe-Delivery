@@ -2,9 +2,10 @@ import styled from "styled-components";
 
 export const NavBar = styled.nav`
   display: flex;
+  max-width: 68rem;
   justify-content: space-between;
   padding: 2rem 0;
-  margin: 0 10rem;
+  margin: 0 auto;
   div {
     display: flex;
     gap: 1rem;
