@@ -2,6 +2,7 @@ export const defaultTheme = {
   white: "#ffffff",
   background: "#fafafa",
 
+  yellow: "#DBAC2C",
   "yellow-dark": "#c47f17",
   "yellow-light": "#f1e9c9",
 
