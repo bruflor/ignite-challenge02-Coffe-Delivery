@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 *{
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
 
 body{
     background: ${(props) => props.theme.background};
-    color: ${props => props.theme["base-text"]};
+    color: ${(props) => props.theme["base-text"]};
     -webkit-font-smoothing: antialiased
 
 }
@@ -29,4 +29,27 @@ input, textarea, button, a{
     border-radius: 6px;
 
 }
-`
+h1, h2{
+    font-family: 'Baloo 2', cursive;
+    font-weight: 800;
+
+}
+h1{
+    color: ${(props) => props.theme["base-title"]};
+    font-size: 2.5rem;
+}
+h2{
+    color: ${(props) => props.theme["base-title"]};
+    font-size: 1.25rem;
+    
+}
+h3{
+    color: ${(props) => props.theme["base-subtitle"]};
+    font-size: 1.25rem;
+    font-weight: 400;
+
+    }
+p{
+        color: ${(props) => props.theme["base-text"]}
+    }
+`;
