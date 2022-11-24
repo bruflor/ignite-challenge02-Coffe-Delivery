@@ -2,7 +2,7 @@ import { ThemeProvider } from "styled-components";
 import { defaultTheme } from "./styles/themes/default";
 import { GlobalStyle } from "./styles/global";
 import { Header } from "./components/Header";
-import { Banner, BannerBullets, BannerItems } from "./App.styles";
+import { Banner, BannerBullets, BannerItems, ProductCard } from "./App.styles";
 import Logo from "./assets/LogoCoffeDelivery.svg";
 import { Coffee, MapPin, Package, ShoppingCart, Timer } from "phosphor-react";
 import BannerImg from "./assets/CoffeBanner.png";
@@ -54,7 +54,25 @@ export function App() {
           <img src={BannerImg} />
         </Banner>
         <div>
-          <div>Card</div>
+          <ProductCard>
+            <img />
+            <div>
+              <span>Tags</span>
+            </div>
+            <h2>Name Coffe</h2>
+            <p>Caracteristicas</p>
+            <div>
+              <span>Price with before R$</span>
+              <div>
+                <button>-</button>
+                <span>1</span>
+                <button>+</button>
+              </div>
+              <button>
+                <ShoppingCart />
+              </button>
+            </div>
+          </ProductCard>
         </div>
       </main>
     </ThemeProvider>

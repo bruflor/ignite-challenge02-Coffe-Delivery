@@ -63,3 +63,5 @@ export const BannerItems = styled.div`
     align-items: center;
   }
 `;
+
+export const ProductCard = styled.div``;
