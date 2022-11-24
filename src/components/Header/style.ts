@@ -31,19 +31,19 @@ export const LocationTag = styled.a`
   }
 `;
 
-export const Cart = styled.a`
+export const CartLink = styled.div`
   position: relative;
-
+  border-radius: 6px;
   display: flex;
   align-items: center;
   background: ${(props) => props.theme["yellow-light"]};
-  color: ${(props) => props.theme["yellow-dark"]};
   padding: 0.5rem 0.75rem;
   :hover {
-    /* background: ${(props) => props.theme.yellow}; */
     cursor: pointer;
   }
-
+  a {
+    color: ${(props) => props.theme["yellow-dark"]};
+  }
   span {
     position: absolute;
     z-index: 1;

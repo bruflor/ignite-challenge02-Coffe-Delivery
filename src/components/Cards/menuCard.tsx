@@ -50,7 +50,7 @@ export const MenuCard = ({ description, name, price, tags }: MenuCardProps) => {
       <img src={imageSRC} />
       <div>
         {tags.map((tag) => {
-          return <Tags>{tag}</Tags>;
+          return <Tags key={tag}>{tag}</Tags>;
         })}
       </div>
       <h4>{name}</h4>
