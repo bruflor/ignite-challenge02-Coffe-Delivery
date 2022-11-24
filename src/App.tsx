@@ -2,10 +2,11 @@ import { ThemeProvider } from "styled-components";
 import { defaultTheme } from "./styles/themes/default";
 import { GlobalStyle } from "./styles/global";
 import { Header } from "./components/Header";
-import { Banner, BannerBullets, BannerItems, ProductCard } from "./App.styles";
-import Logo from "./assets/LogoCoffeDelivery.svg";
-import { Coffee, MapPin, Package, ShoppingCart, Timer } from "phosphor-react";
+import { Banner, BannerBullets, BannerItems, CoffeMenu } from "./App.styles";
+import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
 import BannerImg from "./assets/CoffeBanner.png";
+import { coffeMenu } from "./mocks/coffeMenu";
+import { MenuCard } from "./components/Cards/menuCard";
 
 export function App() {
   return (
@@ -53,27 +54,21 @@ export function App() {
           </div>
           <img src={BannerImg} />
         </Banner>
-        <div>
-          <ProductCard>
-            <img />
-            <div>
-              <span>Tags</span>
-            </div>
-            <h2>Name Coffe</h2>
-            <p>Caracteristicas</p>
-            <div>
-              <span>Price with before R$</span>
-              <div>
-                <button>-</button>
-                <span>1</span>
-                <button>+</button>
-              </div>
-              <button>
-                <ShoppingCart />
-              </button>
-            </div>
-          </ProductCard>
-        </div>
+        <CoffeMenu>
+          <h2>Nossos Cafés</h2>
+          <div>
+            {coffeMenu.map((coffe) => {
+              return (
+                <MenuCard
+                  name={coffe.name}
+                  description={coffe.description}
+                  tags={coffe.tags}
+                  price={coffe.price}
+                />
+              );
+            })}
+          </div>
+        </CoffeMenu>
       </main>
     </ThemeProvider>
   );

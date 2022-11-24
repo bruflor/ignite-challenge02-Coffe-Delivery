@@ -29,7 +29,7 @@ input, textarea, button, a{
     border-radius: 6px;
 
 }
-h1, h2{
+h1, h2, h4{
     font-family: 'Baloo 2', cursive;
     font-weight: 800;
 
@@ -40,7 +40,7 @@ h1{
 }
 h2{
     color: ${(props) => props.theme["base-title"]};
-    font-size: 1.25rem;
+    font-size: 2rem;
     
 }
 h3{
@@ -48,6 +48,9 @@ h3{
     font-size: 1.25rem;
     font-weight: 400;
 
+    }
+    h4{
+        font-size: 1.25rem;
     }
 p{
         color: ${(props) => props.theme["base-text"]}

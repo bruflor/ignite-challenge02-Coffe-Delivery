@@ -64,4 +64,15 @@ export const BannerItems = styled.div`
   }
 `;
 
-export const ProductCard = styled.div``;
+export const CoffeMenu = styled.div`
+  max-width: 68rem;
+  margin: 2rem auto;
+  /* background: red; */
+  > div {
+    max-width: 68rem;
+    margin-top: 2rem;
+    gap: 4rem 1rem;
+    display: flex;
+    flex-wrap: wrap;
+  }
+`;
