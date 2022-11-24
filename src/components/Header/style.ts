@@ -4,7 +4,7 @@ export const NavBar = styled.nav`
   display: flex;
   max-width: 68rem;
   justify-content: space-between;
-  padding: 2rem 0;
+  padding: 2rem;
   margin: 0 auto;
   div {
     display: flex;

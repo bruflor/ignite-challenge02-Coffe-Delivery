@@ -3,11 +3,12 @@ import bgBanner from "./assets/BackgroundBanner.png";
 
 export const Banner = styled.div`
   padding: 2rem;
-  height: 540px;
+  height: 100%;
+  width: 100%;
   background-image: url(${bgBanner});
   background-size: contain;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  /* background-repeat: no-repeat; */
+  /* background-attachment: fixed; */
 
   display: grid;
   /* grid-template-columns: auto 1fr; */
@@ -23,7 +24,13 @@ export const Banner = styled.div`
     html {
       font-size: 87.5%;
     }
+
+    background-size: cover;
     grid-template-columns: 1fr;
+    overflow-wrap: break-word;
+    h1 {
+      font-size: 2.5rem;
+    }
   }
 `;
 
@@ -67,12 +74,15 @@ export const BannerItems = styled.div`
 export const CoffeMenu = styled.div`
   max-width: 68rem;
   margin: 2rem auto;
+  padding: 2rem;
+
   /* background: red; */
   > div {
     max-width: 68rem;
     margin-top: 2rem;
     gap: 4rem 1rem;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
   }
 `;
