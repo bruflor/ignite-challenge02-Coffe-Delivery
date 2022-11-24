@@ -2,9 +2,9 @@ import { ThemeProvider } from "styled-components";
 import { defaultTheme } from "./styles/themes/default";
 import { GlobalStyle } from "./styles/global";
 import { Header } from "./components/Header";
-import { Banner } from "./App.styles";
+import { Banner, BannerBullets, BannerItems } from "./App.styles";
 import Logo from "./assets/LogoCoffeDelivery.svg";
-import { MapPin, ShoppingCart } from "phosphor-react";
+import { Coffee, MapPin, Package, ShoppingCart, Timer } from "phosphor-react";
 import BannerImg from "./assets/CoffeBanner.png";
 
 export function App() {
@@ -20,28 +20,36 @@ export function App() {
               Com o Coffee Delivery você recebe seu café onde estiver, a
               qualquer hora
             </h3>
-            <div>
+            <BannerItems>
               <div>
                 <div>
-                  <span>icon</span>
-                  <p>text</p>
+                  <BannerBullets bulletsColor="yellow-dark">
+                    <ShoppingCart size={16} weight="fill" />
+                  </BannerBullets>
+                  <p>Compra simples e segura</p>
                 </div>
                 <div>
-                  <span>icon</span>
-                  <p>text</p>
+                  <BannerBullets bulletsColor="yellow">
+                    <Timer size={16} weight="fill" />
+                  </BannerBullets>
+                  <p>Entrega rápida e rastreada</p>
                 </div>
               </div>
               <div>
                 <div>
-                  <span>icon</span>
-                  <p>text</p>
+                  <BannerBullets bulletsColor="purple-dark">
+                    <Package size={16} weight="fill" />
+                  </BannerBullets>
+                  <p>Embalagem mantém o café intacto</p>
                 </div>
                 <div>
-                  <span>icon</span>
-                  <p>text</p>
+                  <BannerBullets bulletsColor="purple">
+                    <Coffee size={16} weight="fill" />
+                  </BannerBullets>
+                  <p>O café chega fresquinho até você</p>
                 </div>
               </div>
-            </div>
+            </BannerItems>
           </div>
           <img src={BannerImg} />
         </Banner>

@@ -36,7 +36,7 @@ h1, h2{
 }
 h1{
     color: ${(props) => props.theme["base-title"]};
-    font-size: 2.5rem;
+    font-size: 2.8rem;
 }
 h2{
     color: ${(props) => props.theme["base-title"]};
