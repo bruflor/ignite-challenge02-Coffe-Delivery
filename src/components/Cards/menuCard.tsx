@@ -1,5 +1,5 @@
 import { ShoppingCart } from "phosphor-react";
-import { ProductCard } from "./style";
+import { CounterContainer, ProductCard, Tags } from "./style";
 import Americano from "../../assets/Coffes/Type=Expresso Americano.png";
 import Arabe from "../../assets/Coffes/Type=Árabe.png";
 import ComLeite from "../../assets/Coffes/Type=Café com Leite.png";
@@ -50,18 +50,18 @@ export const MenuCard = ({ description, name, price, tags }: MenuCardProps) => {
       <img src={imageSRC} />
       <div>
         {tags.map((tag) => {
-          return <span>{tag}</span>;
+          return <Tags>{tag}</Tags>;
         })}
       </div>
       <h4>{name}</h4>
       <p>{description}</p>
       <div>
-        <span>R$ {price}</span>
-        <div>
+        <span>{price}</span>
+        <CounterContainer>
           <button>-</button>
           <span>1</span>
           <button>+</button>
-        </div>
+        </CounterContainer>
         <button>
           <ShoppingCart />
         </button>
