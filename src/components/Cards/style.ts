@@ -61,6 +61,9 @@ export const CounterContainer = styled.div`
       color: ${(props) => props.theme["purple-dark"]};
       cursor: pointer;
     }
+    :focus {
+      box-shadow: none;
+    }
   }
 `;
 
@@ -73,4 +76,19 @@ export const Tags = styled.div`
   font-size: 0.75rem;
   font-weight: 700;
   margin-top: -1.5rem;
+`;
+
+export const ButtonCart = styled.button`
+  background: ${(props) => props.theme["purple-dark"]};
+  color: ${(props) => props.theme.white};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 38px;
+  width: 38px;
+  border: 0;
+  :hover {
+    background: ${(props) => props.theme["purple"]};
+    cursor: pointer;
+  }
 `;
