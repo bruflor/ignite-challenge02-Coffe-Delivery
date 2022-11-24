@@ -1,16 +1,20 @@
 import styled from "styled-components";
 
 export const NavBar = styled.nav`
+  padding: 2rem 0;
   display: flex;
   max-width: 68rem;
   justify-content: space-between;
-  padding: 2rem;
   margin: 0 auto;
   div {
     display: flex;
     gap: 1rem;
   }
   img {
+  }
+  @media (max-width: 768px) {
+    padding: 2rem;
+    margin-top: 2rem;
   }
 `;
 

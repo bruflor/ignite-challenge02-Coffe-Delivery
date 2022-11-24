@@ -7,11 +7,8 @@ export const Banner = styled.div`
   width: 100%;
   background-image: url(${bgBanner});
   background-size: contain;
-  /* background-repeat: no-repeat; */
-  /* background-attachment: fixed; */
 
   display: grid;
-  /* grid-template-columns: auto 1fr; */
   grid-template-columns: 540px auto;
   gap: 4rem;
   justify-content: center;
@@ -27,9 +24,14 @@ export const Banner = styled.div`
 
     background-size: cover;
     grid-template-columns: 1fr;
-    overflow-wrap: break-word;
     h1 {
       font-size: 2.5rem;
+    }
+    img {
+      width: 100%;
+    }
+    div {
+      display: block;
     }
   }
 `;
@@ -74,7 +76,7 @@ export const BannerItems = styled.div`
 export const CoffeMenu = styled.div`
   max-width: 68rem;
   margin: 2rem auto;
-  padding: 2rem;
+  margin-bottom: 4rem;
 
   /* background: red; */
   > div {
@@ -82,7 +84,14 @@ export const CoffeMenu = styled.div`
     margin-top: 2rem;
     gap: 4rem 1rem;
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
+  }
+  @media (max-width: 768px) {
+    h2 {
+      text-align: center;
+    }
+    div {
+      justify-content: center;
+    }
   }
 `;
