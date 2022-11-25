@@ -2,8 +2,12 @@ import { CartLink, LocationTag, NavBar } from "./style";
 import Logo from "../../assets/LogoCoffeDelivery.svg";
 import { MapPin, ShoppingCart } from "phosphor-react";
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { CartContext } from "../../contexts/CartContext";
 
 export const Header = () => {
+  const { onCart } = useContext(CartContext);
+
   return (
     <NavBar>
       <NavLink to="/">
@@ -16,7 +20,7 @@ export const Header = () => {
         </LocationTag>
         <CartLink>
           <NavLink to="/cart">
-            <span>3</span>
+            <span>{onCart.length}</span>
             <ShoppingCart size={20} weight="fill" />
           </NavLink>
         </CartLink>
