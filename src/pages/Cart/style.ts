@@ -84,3 +84,9 @@ export const FormContainer = styled.div`
     }
   }
 `;
+
+export const ProductsCardsContainer = styled.div`
+  border-radius: 6px 36px 6px 36px;
+  flex: 1;
+  height: 150%;
+`;

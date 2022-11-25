@@ -44,6 +44,24 @@ export const ProductCard = styled(Card)`
   }
 `;
 
+export const HorizontalCard = styled(Card)`
+  display: flex;
+  gap: 1rem;
+  div:nth-child(2) {
+    width: 100%;
+    gap: 0.5rem;
+  }
+  img {
+    height: 64px;
+  }
+  div div {
+    display: flex;
+  }
+  div:first-child {
+    justify-content: space-between;
+  }
+`;
+
 export const CounterContainer = styled.div`
   background: ${(props) => props.theme["base-button"]};
   display: flex;

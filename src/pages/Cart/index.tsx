@@ -1,5 +1,10 @@
 import { MapPinLine } from "phosphor-react";
-import { CartPageContainer, FormContainer } from "./style";
+import { CartCard } from "../../components/Cards/cartCard";
+import {
+  CartPageContainer,
+  FormContainer,
+  ProductsCardsContainer,
+} from "./style";
 
 export const Cart = () => {
   return (
@@ -26,7 +31,10 @@ export const Cart = () => {
           </form>
         </FormContainer>
       </div>
-      <div>Cards products + total items and button</div>
+      <ProductsCardsContainer>
+        <CartCard name={"Cubano"} price={10} />
+      </ProductsCardsContainer>
+      <div> payments</div>
     </CartPageContainer>
   );
 };
