@@ -15,6 +15,7 @@ import Latte from "../../assets/Coffes/Type=Latte.png";
 import Macchiato from "../../assets/Coffes/Type=Macchiato.png";
 import Mocaccino from "../../assets/Coffes/Type=Mocaccino.png";
 import { useState } from "react";
+import { AmountCounter } from "./AmountCounter";
 
 interface MenuCardProps {
   name: string;
@@ -22,6 +23,7 @@ interface MenuCardProps {
   tags: string[];
   price: number;
   handleAddToCart: any;
+  id: string;
 }
 
 export const MenuCard = ({
@@ -30,6 +32,7 @@ export const MenuCard = ({
   price,
   tags,
   handleAddToCart,
+  id,
 }: MenuCardProps) => {
   const [coffeAmount, setCoffeAmount] = useState(0);
   const imageSrcArray = [
@@ -56,7 +59,12 @@ export const MenuCard = ({
 
   function onHandleAddToCart() {
     if (coffeAmount > 0) {
-      handleAddToCart({ amount: coffeAmount, name: name, price: price });
+      handleAddToCart({
+        amount: coffeAmount,
+        name: name,
+        price: price,
+        id: id,
+      });
     }
   }
 
@@ -71,16 +79,11 @@ export const MenuCard = ({
       <h4>{name}</h4>
       <p>{description}</p>
       <div>
-        <span>{price}</span>
-        <CounterContainer>
-          <button onClick={() => setCoffeAmount(coffeAmount - 1)}>
-            <Minus size={18} weight="fill" />
-          </button>
-          <span>{coffeAmount}</span>
-          <button onClick={() => setCoffeAmount(coffeAmount + 1)}>
-            <Plus size={18} weight="fill" />
-          </button>
-        </CounterContainer>
+        <span>{price.toFixed(2)}</span>
+        <AmountCounter
+          coffeAmount={coffeAmount}
+          setCoffeAmount={setCoffeAmount}
+        />
         <ButtonCart onClick={onHandleAddToCart}>
           <ShoppingCart size={18} weight="fill" />
         </ButtonCart>

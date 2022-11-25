@@ -14,13 +14,22 @@ import Irlandes from "../../assets/Coffes/Type=Irlandês.png";
 import Latte from "../../assets/Coffes/Type=Latte.png";
 import Macchiato from "../../assets/Coffes/Type=Macchiato.png";
 import Mocaccino from "../../assets/Coffes/Type=Mocaccino.png";
+import { AmountCounter } from "./AmountCounter";
+import { useContext, useState } from "react";
+import { CartContext } from "../../contexts/CartContext";
 
 interface CartCardProps {
   name: string;
   price: number;
+  amount: number;
+  id: string;
 }
 
-export const CartCard = ({ name, price }: CartCardProps) => {
+export const CartCard = ({ name, price, amount, id }: CartCardProps) => {
+  // const { onCart, setOnCart } = useContext(CartContext);
+
+  const [coffeAmount, setCoffeAmount] = useState(amount);
+
   const imageSrcArray = [
     Americano,
     Cubano,
@@ -49,18 +58,13 @@ export const CartCard = ({ name, price }: CartCardProps) => {
       <div>
         <div>
           <p>{name}</p>
-          <span>R$ {price}</span>
+          <span>R$ {price.toFixed(2)}</span>
         </div>
         <div>
-          <CounterContainer>
-            <button>
-              <Minus size={18} weight="fill" />
-            </button>
-            <span>1</span>
-            <button>
-              <Plus size={18} weight="fill" />
-            </button>
-          </CounterContainer>
+          <AmountCounter
+            coffeAmount={coffeAmount}
+            setCoffeAmount={setCoffeAmount}
+          />
           <RemoveButton>
             <Trash size={18} /> Remover
           </RemoveButton>

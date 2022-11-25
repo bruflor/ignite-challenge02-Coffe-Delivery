@@ -9,9 +9,10 @@ interface CartContextType {
 }
 
 interface CartProps {
-  amount: number;
   name: string;
   price: number;
+  amount: number;
+  id: string;
 }
 
 export const CartContext = createContext({} as CartContextType);
