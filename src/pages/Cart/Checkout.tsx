@@ -5,7 +5,9 @@ import {
   Money,
   CreditCard,
 } from "phosphor-react";
+import { useContext } from "react";
 import { CartCard } from "../../components/Cards/cartCard";
+import { CartContext } from "../../contexts/CartContext";
 import {
   CartPageContainer,
   FormContainer,
@@ -15,6 +17,14 @@ import {
 } from "./style";
 
 export const Checkout = () => {
+  const { onCart } = useContext(CartContext);
+
+  //TODO: Form section as well for payments methods. They could be a select option
+  //TODO: Button "confirmar pedido" as submit form
+  //TODO: AmountCounter block negative numbers
+  //TODO: Remove Button
+  //TODO: Calculate prices totals
+  //TODO: onSubmit change main page for sucess page and pass data to that
   return (
     <CartPageContainer>
       <CheckoutContainer>
@@ -64,8 +74,17 @@ export const Checkout = () => {
       </CheckoutContainer>
 
       <ProductsCardsContainer>
-        <CartCard name={"Cubano"} price={10} />
-        <CartCard name={"Café com Leite"} price={2} />
+        {onCart.map((product) => {
+          return (
+            <CartCard
+              key={product.id}
+              id={product.id}
+              amount={product.amount}
+              name={product.name}
+              price={product.price}
+            />
+          );
+        })}
         <div>
           <p>Total de itens</p>
           <p>R$ 1256</p>

@@ -6,7 +6,6 @@ import { coffeMenu } from "../../mocks/coffeMenu";
 import { CoffeMenu } from "./style";
 
 export const Home = () => {
-  // const [onCart, setOnCart] = useState<CartProps[]>([]);
   const { onCart, setOnCart } = useContext(CartContext);
   function onHandleAddToCart(newItemCart: any) {
     if (onCart.length >= 1) {
@@ -26,6 +25,7 @@ export const Home = () => {
               <MenuCard
                 handleAddToCart={onHandleAddToCart}
                 key={coffe.id}
+                id={coffe.id}
                 name={coffe.name}
                 description={coffe.description}
                 tags={coffe.tags}
