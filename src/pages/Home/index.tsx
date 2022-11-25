@@ -1,17 +1,13 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { BannerInfo } from "../../components/Banner";
 import { MenuCard } from "../../components/Cards/menuCard";
+import { CartContext } from "../../contexts/CartContext";
 import { coffeMenu } from "../../mocks/coffeMenu";
 import { CoffeMenu } from "./style";
 
-interface CartProps {
-  amount: number;
-  name: string;
-  price: number;
-}
-
 export const Home = () => {
-  const [onCart, setOnCart] = useState<CartProps[]>([]);
+  // const [onCart, setOnCart] = useState<CartProps[]>([]);
+  const { onCart, setOnCart } = useContext(CartContext);
   function onHandleAddToCart(newItemCart: any) {
     if (onCart.length >= 1) {
       setOnCart([...onCart, newItemCart]);
@@ -19,7 +15,6 @@ export const Home = () => {
       setOnCart([newItemCart]);
     }
   }
-
   return (
     <main>
       <BannerInfo />
