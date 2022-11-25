@@ -5,10 +5,10 @@ export const CartPageContainer = styled.div`
   grid-template-columns: 640px 420px;
   justify-content: center;
   gap: 2rem;
-  /* align-items: center; */
 
-  div {
-    /* background: red; */
+  > div {
+    padding: 3rem;
+    background: ${(props) => props.theme["base-card"]};
   }
 
   @media (max-width: 768px) {
@@ -17,12 +17,15 @@ export const CartPageContainer = styled.div`
 `;
 
 export const FormContainer = styled.div`
-  background: ${(props) => props.theme["base-card"]};
-  padding: 3rem;
+  /* padding: 3rem;
+  background: ${(props) => props.theme["base-card"]}; */
   > div {
     display: flex;
     margin-bottom: 2rem;
-
+    gap: 0.5rem;
+    svg {
+      color: ${(props) => props.theme["yellow-dark"]};
+    }
     > div > h3 {
       font-size: 1rem;
     }
