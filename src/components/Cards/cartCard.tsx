@@ -1,5 +1,5 @@
-import { Minus, Plus } from "phosphor-react";
-import { CounterContainer, HorizontalCard } from "./style";
+import { Minus, Plus, Trash } from "phosphor-react";
+import { CounterContainer, HorizontalCard, RemoveButton } from "./style";
 import Americano from "../../assets/Coffes/Type=Expresso Americano.png";
 import Arabe from "../../assets/Coffes/Type=Árabe.png";
 import ComLeite from "../../assets/Coffes/Type=Café com Leite.png";
@@ -49,7 +49,7 @@ export const CartCard = ({ name, price }: CartCardProps) => {
       <div>
         <div>
           <p>{name}</p>
-          <span>{price}</span>
+          <span>R$ {price}</span>
         </div>
         <div>
           <CounterContainer>
@@ -61,7 +61,9 @@ export const CartCard = ({ name, price }: CartCardProps) => {
               <Plus size={18} weight="fill" />
             </button>
           </CounterContainer>
-          <button>Remover</button>
+          <RemoveButton>
+            <Trash size={18} /> Remover
+          </RemoveButton>
         </div>
       </div>
     </HorizontalCard>

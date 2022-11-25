@@ -7,7 +7,7 @@ export const CartPageContainer = styled.div`
   gap: 2rem;
 
   > div {
-    padding: 3rem;
+    padding: 2rem;
     background: ${(props) => props.theme["base-card"]};
   }
 
@@ -88,5 +88,8 @@ export const FormContainer = styled.div`
 export const ProductsCardsContainer = styled.div`
   border-radius: 6px 36px 6px 36px;
   flex: 1;
+  display: flex;
+  flex-direction: column;
   height: 150%;
+  gap: 1rem;
 `;

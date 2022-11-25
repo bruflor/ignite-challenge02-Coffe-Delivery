@@ -47,10 +47,19 @@ export const ProductCard = styled(Card)`
 export const HorizontalCard = styled(Card)`
   display: flex;
   gap: 1rem;
+  padding-bottom: 1.5rem;
+  padding-top: 0.5rem;
+  border-bottom: 1px solid ${(props) => props.theme["base-button"]};
+
   div:nth-child(2) {
     width: 100%;
     gap: 0.5rem;
+    margin-top: 0.25rem;
   }
+  span {
+    font-weight: 700;
+  }
+
   img {
     height: 64px;
   }
@@ -69,6 +78,10 @@ export const CounterContainer = styled.div`
   gap: 0.5rem;
   padding: 0.5rem 1rem;
   border-radius: 6px;
+
+  span {
+    font-weight: 400;
+  }
 
   button {
     background: none;
@@ -94,6 +107,36 @@ export const Tags = styled.div`
   font-size: 0.75rem;
   font-weight: 700;
   margin-top: -1.5rem;
+`;
+export const RemoveButton = styled.button`
+  background: ${(props) => props.theme["base-button"]};
+  color: ${(props) => props.theme["base-text"]};
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  border: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0 0.5rem;
+  svg {
+    color: ${(props) => props.theme.purple};
+  }
+
+  svg:hover {
+    color: ${(props) => props.theme["purple-dark"]};
+  }
+
+  :hover {
+    background: ${(props) => props.theme["base-hover"]};
+    color: ${(props) => props.theme["base-subtitle"]};
+    cursor: pointer;
+  }
+  :active {
+    background: ${(props) => props.theme["purple-light"]};
+    border: 1px solid ${(props) => props.theme["purple"]};
+  }
 `;
 
 export const ButtonCart = styled.button`

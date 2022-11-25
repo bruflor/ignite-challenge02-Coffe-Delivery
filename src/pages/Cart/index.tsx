@@ -33,6 +33,7 @@ export const Cart = () => {
       </div>
       <ProductsCardsContainer>
         <CartCard name={"Cubano"} price={10} />
+        <CartCard name={"Café com Leite"} price={2} />
       </ProductsCardsContainer>
       <div> payments</div>
     </CartPageContainer>
