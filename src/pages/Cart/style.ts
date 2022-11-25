@@ -6,19 +6,24 @@ export const CartPageContainer = styled.div`
   justify-content: center;
   gap: 2rem;
 
-  > div {
-    padding: 2rem;
-    background: ${(props) => props.theme["base-card"]};
-  }
-
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+`;
+
+export const CheckoutContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  div {
+    background: ${(props) => props.theme["base-card"]};
   }
 `;
 
 export const FormContainer = styled.div`
-  /* padding: 3rem;
-  background: ${(props) => props.theme["base-card"]}; */
+  padding: 2rem;
   > div {
     display: flex;
     margin-bottom: 2rem;
@@ -85,11 +90,17 @@ export const FormContainer = styled.div`
   }
 `;
 
+export const PaymentContainer = styled.div`
+  padding: 2rem;
+`;
+
 export const ProductsCardsContainer = styled.div`
+  background: ${(props) => props.theme["base-card"]};
+  padding: 2rem;
+
   border-radius: 6px 36px 6px 36px;
   flex: 1;
   display: flex;
   flex-direction: column;
-  height: 150%;
   gap: 1rem;
 `;
