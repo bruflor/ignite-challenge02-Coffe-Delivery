@@ -165,3 +165,49 @@ export const ProductsCardsContainer = styled.div`
     }
   }
 `;
+
+export const SucessContainer = styled.div`
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  h1 {
+    color: ${(props) => props.theme["yellow-dark"]};
+  }
+
+  img {
+    width: 100%;
+  }
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+`;
+
+export const DetailDeliveryContainer = styled.div`
+  border-radius: 6px 36px 6px 36px;
+  border: double 2px transparent;
+  background-image: linear-gradient(white, white),
+    radial-gradient(
+      circle at top left,
+      ${(props) => props.theme.yellow},
+      ${(props) => props.theme.purple}
+    );
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  margin: 42px 0;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  > div > div {
+    display: flex;
+    gap: 1rem;
+  }
+`;
