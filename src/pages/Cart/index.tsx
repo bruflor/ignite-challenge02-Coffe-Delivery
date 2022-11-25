@@ -75,9 +75,10 @@ export const Cart = () => {
           <p>R$ 2</p>
         </div>
         <div>
-          <h2>Total</h2>
-          <h2>R$ 1258</h2>
+          <h3>Total</h3>
+          <h3>R$ 1258</h3>
         </div>
+        <button>Confirmar pedido</button>
       </ProductsCardsContainer>
     </CartPageContainer>
   );

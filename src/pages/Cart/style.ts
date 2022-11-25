@@ -92,6 +92,45 @@ export const FormContainer = styled.div`
 
 export const PaymentContainer = styled.div`
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  svg {
+    color: ${(props) => props.theme.purple};
+  }
+  > div {
+    display: flex;
+    gap: 0.5rem;
+
+    > button {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.5rem;
+
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      color: ${(props) => props.theme["base-text"]};
+      border: 0;
+      background: ${(props) => props.theme["base-button"]};
+
+      svg:hover {
+        color: ${(props) => props.theme["purple-dark"]};
+      }
+
+      :hover {
+        background: ${(props) => props.theme["base-hover"]};
+        color: ${(props) => props.theme["base-subtitle"]};
+        cursor: pointer;
+      }
+      :active {
+        background: ${(props) => props.theme["purple-light"]};
+        border: 1px solid ${(props) => props.theme["purple"]};
+      }
+    }
+  }
 `;
 
 export const ProductsCardsContainer = styled.div`
@@ -103,4 +142,26 @@ export const ProductsCardsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  > div {
+    display: flex;
+    justify-content: space-between;
+
+    h3 {
+      font-weight: 700;
+    }
+  }
+
+  > button {
+    margin-top: 1.5rem;
+    border: 0;
+    background: ${(props) => props.theme["yellow"]};
+    color: ${(props) => props.theme.white};
+    padding: 0.75rem;
+
+    :hover {
+      background: ${(props) => props.theme["yellow-dark"]};
+      cursor: pointer;
+    }
+  }
 `;
