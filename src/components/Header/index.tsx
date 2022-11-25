@@ -15,8 +15,8 @@ export const Header = () => {
           <span>Location</span>
         </LocationTag>
         <CartLink>
-          <span>3</span>
           <NavLink to="/cart">
+            <span>3</span>
             <ShoppingCart size={20} weight="fill" />
           </NavLink>
         </CartLink>
