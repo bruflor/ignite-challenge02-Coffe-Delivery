@@ -21,24 +21,12 @@ export const Checkout = () => {
 
   //TODO: Form section as well for payments methods. They could be a select option
   //TODO: Button "confirmar pedido" as submit form
-  //TODO: AmountCounter block negative numbers
-  //TODO: Remove Button
-  //TODO: Calculate prices totals
   //TODO: onSubmit change main page for sucess page and pass data to that
+  //TODO: when already have one coffeType on cart button addToCart just update the amount
 
   const sumPrices = onCart.reduce((accumulator, object) => {
     return accumulator + object.priceTotal;
   }, 0);
-
-  // function removeCoffeTypefromCart(typeToRemoveId: string) {
-  //   const currentCart = [...onCart];
-  //   const coffeTypeIndex = currentCart.findIndex(
-  //     (coffeType) => coffeType.id === typeToRemoveId
-  //   );
-
-  //   currentCart.splice(coffeTypeIndex);
-  //   return setOnCart(currentCart);
-  // }
 
   const deliveryPrice = 3.5;
   return (
