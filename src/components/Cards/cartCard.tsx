@@ -15,7 +15,7 @@ import Latte from "../../assets/Coffes/Type=Latte.png";
 import Macchiato from "../../assets/Coffes/Type=Macchiato.png";
 import Mocaccino from "../../assets/Coffes/Type=Mocaccino.png";
 import { AmountCounter } from "./AmountCounter";
-import { useContext, useEffect, useState } from "react";
+import { MouseEventHandler, useContext, useEffect, useState } from "react";
 import { CartContext } from "../../contexts/CartContext";
 
 interface CartCardProps {
@@ -34,7 +34,6 @@ export const CartCard = ({
   priceTotal,
 }: CartCardProps) => {
   const { onCart, setOnCart } = useContext(CartContext);
-
   const [coffeAmount, setCoffeAmount] = useState(amount);
 
   useEffect(() => {
@@ -50,7 +49,6 @@ export const CartCard = ({
     console.log(productsOnCart);
   }, [coffeAmount]);
 
-  // const renderPrice = (price * amount).toFixed(2);
   const imageSrcArray = [
     Americano,
     Cubano,
@@ -73,6 +71,15 @@ export const CartCard = ({
   }
   const imageSRC = imageSrcArray.find(findSRC);
 
+  function removeCoffeTypefromCart(typeToRemoveId: string) {
+    const currentCart = [...onCart];
+    const cartWithoutDeleted = currentCart.filter((coffeType) => {
+      return coffeType.id !== typeToRemoveId;
+    });
+
+    return setOnCart(cartWithoutDeleted);
+  }
+
   return (
     <HorizontalCard>
       <img src={imageSRC} />
@@ -86,7 +93,10 @@ export const CartCard = ({
             coffeAmount={coffeAmount}
             setCoffeAmount={setCoffeAmount}
           />
-          <RemoveButton>
+          <RemoveButton
+            onClick={() => removeCoffeTypefromCart(id)}
+            type="button"
+          >
             <Trash size={18} /> Remover
           </RemoveButton>
         </div>

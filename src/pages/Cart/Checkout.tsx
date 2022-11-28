@@ -17,7 +17,7 @@ import {
 } from "./style";
 
 export const Checkout = () => {
-  const { onCart } = useContext(CartContext);
+  const { onCart, setOnCart } = useContext(CartContext);
 
   //TODO: Form section as well for payments methods. They could be a select option
   //TODO: Button "confirmar pedido" as submit form
@@ -30,9 +30,17 @@ export const Checkout = () => {
     return accumulator + object.priceTotal;
   }, 0);
 
-  useEffect(() => {}, [onCart]);
+  // function removeCoffeTypefromCart(typeToRemoveId: string) {
+  //   const currentCart = [...onCart];
+  //   const coffeTypeIndex = currentCart.findIndex(
+  //     (coffeType) => coffeType.id === typeToRemoveId
+  //   );
 
-  const deliveryPrice = 2;
+  //   currentCart.splice(coffeTypeIndex);
+  //   return setOnCart(currentCart);
+  // }
+
+  const deliveryPrice = 3.5;
   return (
     <CartPageContainer>
       <CheckoutContainer>
