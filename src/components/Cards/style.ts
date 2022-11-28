@@ -102,6 +102,10 @@ export const CounterContainer = styled.div`
     :focus {
       box-shadow: none;
     }
+    :disabled {
+      color: ${(props) => props.theme["base-label"]};
+      cursor: not-allowed;
+    }
   }
 `;
 
