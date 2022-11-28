@@ -41,6 +41,13 @@ export const ProductCard = styled(Card)`
       font-weight: 400;
       font-family: "Roboto", sans-serif;
     }
+    > span::after {
+      content: "/uni";
+      padding-right: 0.25rem;
+      font-size: 0.875rem;
+      font-weight: 400;
+      font-family: "Roboto", sans-serif;
+    }
   }
 `;
 

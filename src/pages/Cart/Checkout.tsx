@@ -5,7 +5,7 @@ import {
   Money,
   CreditCard,
 } from "phosphor-react";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { CartCard } from "../../components/Cards/cartCard";
 import { CartContext } from "../../contexts/CartContext";
 import {
@@ -27,8 +27,10 @@ export const Checkout = () => {
   //TODO: onSubmit change main page for sucess page and pass data to that
 
   const sumPrices = onCart.reduce((accumulator, object) => {
-    return accumulator + object.price;
+    return accumulator + object.priceTotal;
   }, 0);
+
+  useEffect(() => {}, [onCart]);
 
   const deliveryPrice = 2;
   return (
@@ -87,7 +89,8 @@ export const Checkout = () => {
               id={product.id}
               amount={product.amount}
               name={product.name}
-              price={product.price}
+              priceUnit={product.priceUnit}
+              priceTotal={product.priceTotal}
             />
           );
         })}

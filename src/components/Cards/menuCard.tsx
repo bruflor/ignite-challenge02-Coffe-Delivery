@@ -21,7 +21,8 @@ interface MenuCardProps {
   name: string;
   description: string;
   tags: string[];
-  price: number;
+  priceUnit: number;
+  priceTotal?: number;
   handleAddToCart: any;
   id: string;
 }
@@ -29,7 +30,8 @@ interface MenuCardProps {
 export const MenuCard = ({
   description,
   name,
-  price,
+  priceUnit,
+  priceTotal,
   tags,
   handleAddToCart,
   id,
@@ -62,7 +64,8 @@ export const MenuCard = ({
       handleAddToCart({
         amount: coffeAmount,
         name: name,
-        price: price * coffeAmount,
+        priceTotal: priceTotal,
+        priceUnit: priceUnit,
         id: id,
       });
     }
@@ -79,7 +82,7 @@ export const MenuCard = ({
       <h4>{name}</h4>
       <p>{description}</p>
       <div>
-        <span>{price.toFixed(2)}</span>
+        <span>{priceUnit.toFixed(2)}</span>
         <AmountCounter
           coffeAmount={coffeAmount}
           setCoffeAmount={setCoffeAmount}

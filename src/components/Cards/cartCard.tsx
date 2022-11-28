@@ -15,21 +15,42 @@ import Latte from "../../assets/Coffes/Type=Latte.png";
 import Macchiato from "../../assets/Coffes/Type=Macchiato.png";
 import Mocaccino from "../../assets/Coffes/Type=Mocaccino.png";
 import { AmountCounter } from "./AmountCounter";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../contexts/CartContext";
 
 interface CartCardProps {
   name: string;
-  price: number;
+  priceUnit: number;
+  priceTotal: number;
   amount: number;
   id: string;
 }
 
-export const CartCard = ({ name, price, amount, id }: CartCardProps) => {
-  // const { onCart, setOnCart } = useContext(CartContext);
+export const CartCard = ({
+  name,
+  priceUnit,
+  amount,
+  id,
+  priceTotal,
+}: CartCardProps) => {
+  const { onCart, setOnCart } = useContext(CartContext);
 
   const [coffeAmount, setCoffeAmount] = useState(amount);
 
+  useEffect(() => {
+    const productsOnCart = [...onCart];
+    const productIndexToUpdate = productsOnCart.findIndex(
+      (product) => product.id === id
+    );
+
+    productsOnCart[productIndexToUpdate].amount = coffeAmount;
+    productsOnCart[productIndexToUpdate].priceTotal = priceUnit * coffeAmount;
+
+    setOnCart(productsOnCart);
+    console.log(productsOnCart);
+  }, [coffeAmount]);
+
+  // const renderPrice = (price * amount).toFixed(2);
   const imageSrcArray = [
     Americano,
     Cubano,
@@ -58,7 +79,7 @@ export const CartCard = ({ name, price, amount, id }: CartCardProps) => {
       <div>
         <div>
           <p>{name}</p>
-          <span>R$ {price.toFixed(2)}</span>
+          <span>R$ {priceTotal.toFixed(2)}</span>
         </div>
         <div>
           <AmountCounter

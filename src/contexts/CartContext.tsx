@@ -10,7 +10,8 @@ interface CartContextType {
 
 interface CartProps {
   name: string;
-  price: number;
+  priceUnit: number;
+  priceTotal: number;
   amount: number;
   id: string;
 }

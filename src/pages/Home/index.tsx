@@ -29,7 +29,7 @@ export const Home = () => {
                 name={coffe.name}
                 description={coffe.description}
                 tags={coffe.tags}
-                price={coffe.price}
+                priceUnit={coffe.price}
               />
             );
           })}
