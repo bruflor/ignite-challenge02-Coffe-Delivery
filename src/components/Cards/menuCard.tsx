@@ -62,7 +62,7 @@ export const MenuCard = ({
       handleAddToCart({
         amount: coffeAmount,
         name: name,
-        price: price,
+        price: price * coffeAmount,
         id: id,
       });
     }

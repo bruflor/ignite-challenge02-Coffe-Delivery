@@ -25,6 +25,12 @@ export const Checkout = () => {
   //TODO: Remove Button
   //TODO: Calculate prices totals
   //TODO: onSubmit change main page for sucess page and pass data to that
+
+  const sumPrices = onCart.reduce((accumulator, object) => {
+    return accumulator + object.price;
+  }, 0);
+
+  const deliveryPrice = 2;
   return (
     <CartPageContainer>
       <CheckoutContainer>
@@ -87,15 +93,15 @@ export const Checkout = () => {
         })}
         <div>
           <p>Total de itens</p>
-          <p>R$ 1256</p>
+          <p>R$ {sumPrices.toFixed(2)}</p>
         </div>
         <div>
           <p>Entrega</p>
-          <p>R$ 2</p>
+          <p>R$ {deliveryPrice.toFixed(2)}</p>
         </div>
         <div>
           <h3>Total</h3>
-          <h3>R$ 1258</h3>
+          <h3>R$ {(deliveryPrice + sumPrices).toFixed(2)}</h3>
         </div>
         <button>Confirmar pedido</button>
       </ProductsCardsContainer>
