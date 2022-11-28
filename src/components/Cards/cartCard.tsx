@@ -46,7 +46,6 @@ export const CartCard = ({
     productsOnCart[productIndexToUpdate].priceTotal = priceUnit * coffeAmount;
 
     setOnCart(productsOnCart);
-    console.log(productsOnCart);
   }, [coffeAmount]);
 
   const imageSrcArray = [
@@ -86,7 +85,7 @@ export const CartCard = ({
       <div>
         <div>
           <p>{name}</p>
-          <span>R$ {priceTotal.toFixed(2)}</span>
+          <span>R$ {priceTotal ? priceTotal.toFixed(2) : 0}</span>
         </div>
         <div>
           <AmountCounter
