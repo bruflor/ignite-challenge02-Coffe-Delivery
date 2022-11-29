@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import { BannerInfo } from "../../components/Banner";
 import { MenuCard } from "../../components/Cards/menuCard";
-import { ProductCard } from "../../components/Cards/style";
 import { CartContext } from "../../contexts/CartContext";
 import { coffeMenu } from "../../mocks/coffeMenu";
 import { CoffeMenu } from "./style";

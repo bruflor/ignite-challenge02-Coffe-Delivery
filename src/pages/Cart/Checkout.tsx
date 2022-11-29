@@ -12,8 +12,9 @@ import {
   CartPageContainer,
   FormContainer,
   ProductsCardsContainer,
-  CheckoutContainer,
   PaymentContainer,
+  AddressContainer,
+  InputTextContainer,
 } from "./style";
 
 export const Checkout = () => {
@@ -31,8 +32,9 @@ export const Checkout = () => {
   const deliveryPrice = 3.5;
   return (
     <CartPageContainer>
-      <CheckoutContainer>
-        <FormContainer>
+      {/* <CheckoutContainer> */}
+      <FormContainer id="checkoutForm">
+        <AddressContainer>
           <div>
             <MapPinLine size={24} />
             <div>
@@ -40,7 +42,7 @@ export const Checkout = () => {
               <span>Informe o endereço onde deseja receber seu pedido</span>
             </div>
           </div>
-          <form>
+          <InputTextContainer>
             <input placeholder="CEP" />
             <input placeholder="Rua" />
             <input placeholder="Número" />
@@ -50,8 +52,8 @@ export const Checkout = () => {
               <input placeholder="Cidade" />
               <input placeholder="UF" />
             </div>
-          </form>
-        </FormContainer>
+          </InputTextContainer>
+        </AddressContainer>
         <PaymentContainer>
           <div>
             <CurrencyDollar size={24} />
@@ -75,7 +77,8 @@ export const Checkout = () => {
             </button>
           </div>
         </PaymentContainer>
-      </CheckoutContainer>
+      </FormContainer>
+      {/* </CheckoutContainer> */}
 
       <ProductsCardsContainer>
         {onCart.map((product) => {
@@ -102,7 +105,9 @@ export const Checkout = () => {
           <h3>Total</h3>
           <h3>R$ {(deliveryPrice + sumPrices).toFixed(2)}</h3>
         </div>
-        <button>Confirmar pedido</button>
+        <button type="submit" form="checkoutForm" value="Confirmar pedido">
+          Confirmar pedido
+        </button>
       </ProductsCardsContainer>
     </CartPageContainer>
   );

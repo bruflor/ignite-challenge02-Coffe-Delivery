@@ -12,85 +12,97 @@ export const CartPageContainer = styled.div`
   }
 `;
 
-export const CheckoutContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+// export const CheckoutContainer = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 1rem;
 
-  div {
-    background: ${(props) => props.theme["base-card"]};
+//   > div {
+//   }
+// `;
+
+export const AddressContainer = styled.div`
+  padding: 2rem;
+  border-radius: 6px;
+  background: ${(props) => props.theme["base-card"]};
+  margin-bottom: 32px;
+
+  svg {
+    color: ${(props) => props.theme["yellow-dark"]};
+  }
+  > div:first-child {
+    display: flex;
+    gap: 0.5rem;
+    /* margin-bottom: 32px; */
   }
 `;
-
-export const FormContainer = styled.div`
-  padding: 2rem;
+export const FormContainer = styled.form`
+  > div {
+    /* margin-bottom: 2rem; */
+    gap: 0.5rem;
+  }
+  h3 {
+    font-size: 1rem;
+  }
+  span {
+    font-size: 0.875rem;
+  }
+`;
+export const InputTextContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.5rem;
   > div {
     display: flex;
-    margin-bottom: 2rem;
+    grid-column: -1 / 2;
+
     gap: 0.5rem;
-    svg {
-      color: ${(props) => props.theme["yellow-dark"]};
+  }
+  input {
+    width: 100%;
+    background: ${(props) => props.theme["base-input"]};
+    border: 1px solid ${(props) => props.theme["base-button"]};
+    border-radius: 4px;
+    outline: none;
+    padding: 0.5rem;
+    :focus {
+      border: 1px solid ${(props) => props.theme["yellow-dark"]};
     }
-    > div > h3 {
-      font-size: 1rem;
+    :nth-child(2) {
+      grid-column: -1 / 1;
     }
-    > div > span {
-      font-size: 0.875rem;
+    :nth-child(4) {
+      grid-column: -1 / 2;
+    }
+    :last-child {
+      width: 30%;
     }
   }
-  form {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 0.5rem;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
     > div {
-      grid-column: -1 / 2;
-      display: flex;
-      gap: 0.5rem;
+      display: block;
+      grid-column: 1 / 3;
     }
     input {
-      width: 100%;
-      background: ${(props) => props.theme["base-input"]};
-      border: 1px solid ${(props) => props.theme["base-button"]};
-      border-radius: 4px;
-      outline: none;
-      padding: 0.5rem;
-      :focus {
-        border: 1px solid ${(props) => props.theme["yellow-dark"]};
-      }
+      grid-column: 1 / 3;
       :nth-child(2) {
-        grid-column: -1 / 1;
+        grid-column: 1 / 3;
       }
       :nth-child(4) {
-        grid-column: -1 / 2;
+        grid-column: 1 / 3;
       }
       :last-child {
-        width: 30%;
-      }
-    }
-    @media (max-width: 768px) {
-      grid-template-columns: 1fr;
-      > div {
-        display: block;
-        grid-column: 1 / 3;
-      }
-      input {
-        grid-column: 1 / 3;
-        :nth-child(2) {
-          grid-column: 1 / 3;
-        }
-        :nth-child(4) {
-          grid-column: 1 / 3;
-        }
-        :last-child {
-          margin-top: 0.5rem;
-          width: 100%;
-        }
+        margin-top: 0.5rem;
+        width: 100%;
       }
     }
   }
 `;
 
 export const PaymentContainer = styled.div`
+  background: ${(props) => props.theme["base-card"]};
+
   padding: 2rem;
   display: flex;
   flex-direction: column;
@@ -136,12 +148,12 @@ export const PaymentContainer = styled.div`
 export const ProductsCardsContainer = styled.div`
   background: ${(props) => props.theme["base-card"]};
   padding: 2rem;
-
   border-radius: 6px 36px 6px 36px;
-  flex: 1;
+  /* flex: 1; */
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  height: auto;
 
   > div {
     display: flex;
