@@ -24,9 +24,10 @@ export const AddressContainer = styled.div`
   > div:first-child {
     display: flex;
     gap: 0.5rem;
-    /* margin-bottom: 32px; */
+    margin-bottom: 32px;
   }
 `;
+
 export const FormContainer = styled.form`
   > div {
     /* margin-bottom: 2rem; */
@@ -39,6 +40,7 @@ export const FormContainer = styled.form`
     font-size: 0.875rem;
   }
 `;
+
 export const InputTextContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -143,6 +145,9 @@ export const PaymentContainer = styled.div`
       background: ${(props) => props.theme["purple-light"]};
       border: 1px solid ${(props) => props.theme["purple"]};
     }
+  }
+  > div > div {
+    margin-bottom: 1rem;
   }
 `;
 

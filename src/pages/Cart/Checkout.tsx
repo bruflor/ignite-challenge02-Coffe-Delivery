@@ -18,22 +18,24 @@ import {
 } from "./style";
 
 export const Checkout = () => {
-  const { onCart, setOnCart } = useContext(CartContext);
+  const { onCart } = useContext(CartContext);
 
-  //TODO: Form section as well for payments methods. They could be a select option
   //TODO: Button "confirmar pedido" as submit form
   //TODO: onSubmit change main page for sucess page and pass data to that
-  //TODO: when already have one coffeType on cart button addToCart just update the amount
 
   const sumPrices = onCart.reduce((accumulator, object) => {
     return accumulator + object.priceTotal;
   }, 0);
 
   const deliveryPrice = 3.5;
+
+  function handleSubmit(e: any) {
+    e.preventDefault();
+    console.log(e.target.value);
+  }
   return (
     <CartPageContainer>
-      {/* <CheckoutContainer> */}
-      <FormContainer id="checkoutForm">
+      <FormContainer id="checkoutForm" onSubmit={handleSubmit}>
         <AddressContainer>
           <div>
             <MapPinLine size={24} />
@@ -63,18 +65,6 @@ export const Checkout = () => {
             </div>
           </div>
           <div>
-            {/* <button>
-              <CreditCard size={24} />
-              Cartão de crédito
-            </button>
-            <button>
-              <Bank size={24} />
-              Cartão de débito
-            </button>
-            <button>
-              <Money size={24} />
-              dinheiro
-            </button> */}
             <input
               name="paymentMethods"
               type="radio"
@@ -108,7 +98,6 @@ export const Checkout = () => {
           </div>
         </PaymentContainer>
       </FormContainer>
-      {/* </CheckoutContainer> */}
 
       <ProductsCardsContainer>
         {onCart.map((product) => {
