@@ -63,7 +63,7 @@ export const Checkout = () => {
             </div>
           </div>
           <div>
-            <button>
+            {/* <button>
               <CreditCard size={24} />
               Cartão de crédito
             </button>
@@ -74,7 +74,37 @@ export const Checkout = () => {
             <button>
               <Money size={24} />
               dinheiro
-            </button>
+            </button> */}
+            <input
+              name="paymentMethods"
+              type="radio"
+              value="creditCard"
+              id="creditCard"
+            />
+            <label htmlFor="creditCard">
+              <CreditCard size={24} />
+              Cartão de crédito
+            </label>
+            <input
+              name="paymentMethods"
+              type="radio"
+              value="debitCard"
+              id="debitCard"
+            />
+            <label htmlFor="debitCard">
+              <Bank size={24} />
+              Cartão de débito
+            </label>
+            <input
+              name="paymentMethods"
+              type="radio"
+              value="money"
+              id="money"
+            />
+            <label htmlFor="money">
+              <Money size={24} />
+              dinheiro
+            </label>
           </div>
         </PaymentContainer>
       </FormContainer>

@@ -12,15 +12,6 @@ export const CartPageContainer = styled.div`
   }
 `;
 
-// export const CheckoutContainer = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   gap: 1rem;
-
-//   > div {
-//   }
-// `;
-
 export const AddressContainer = styled.div`
   padding: 2rem;
   border-radius: 6px;
@@ -102,25 +93,35 @@ export const InputTextContainer = styled.div`
 
 export const PaymentContainer = styled.div`
   background: ${(props) => props.theme["base-card"]};
-
   padding: 2rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+
   svg {
     color: ${(props) => props.theme.purple};
   }
+
   > div {
     display: flex;
     gap: 0.5rem;
 
-    > button {
+    > input {
+      opacity: 0;
+      position: fixed;
+      width: 0;
+    }
+
+    > label {
       width: 100%;
+      display: inline-block;
+
       display: flex;
       align-items: center;
-      justify-content: center;
+      /* justify-content: center; */
       gap: 0.5rem;
-      padding: 0.5rem;
+      padding: 1rem;
+      border-radius: 6px;
 
       text-transform: uppercase;
       font-size: 0.75rem;
@@ -137,10 +138,10 @@ export const PaymentContainer = styled.div`
         color: ${(props) => props.theme["base-subtitle"]};
         cursor: pointer;
       }
-      :active {
-        background: ${(props) => props.theme["purple-light"]};
-        border: 1px solid ${(props) => props.theme["purple"]};
-      }
+    }
+    input:checked + label {
+      background: ${(props) => props.theme["purple-light"]};
+      border: 1px solid ${(props) => props.theme["purple"]};
     }
   }
 `;
@@ -149,7 +150,6 @@ export const ProductsCardsContainer = styled.div`
   background: ${(props) => props.theme["base-card"]};
   padding: 2rem;
   border-radius: 6px 36px 6px 36px;
-  /* flex: 1; */
   display: flex;
   flex-direction: column;
   gap: 1rem;
