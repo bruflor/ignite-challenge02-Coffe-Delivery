@@ -24,6 +24,8 @@ interface CheckoutProps {
   setPurchaseData: (inputData: CartPurchaseProps) => void;
 }
 
+//TODO: Validation form and done!
+
 export const Checkout = ({ setPurchaseData }: CheckoutProps) => {
   const { onCart } = useContext(CartContext);
   const { register, handleSubmit } = useForm();
