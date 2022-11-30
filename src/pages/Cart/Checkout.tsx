@@ -5,9 +5,11 @@ import {
   Money,
   CreditCard,
 } from "phosphor-react";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartCard } from "../../components/Cards/cartCard";
 import { CartContext } from "../../contexts/CartContext";
+import { useForm } from "react-hook-form";
+
 import {
   CartPageContainer,
   FormContainer,
@@ -19,6 +21,8 @@ import {
 
 export const Checkout = () => {
   const { onCart } = useContext(CartContext);
+  const [purchaseData, setPurchaseData] = useState({});
+  const { register, handleSubmit } = useForm();
 
   //TODO: Button "confirmar pedido" as submit form
   //TODO: onSubmit change main page for sucess page and pass data to that
@@ -29,13 +33,16 @@ export const Checkout = () => {
 
   const deliveryPrice = 3.5;
 
-  function handleSubmit(e: any) {
-    e.preventDefault();
-    console.log(e.target.value);
+  function handlePurchaseData(data: any) {
+    console.log(data);
   }
+
   return (
     <CartPageContainer>
-      <FormContainer id="checkoutForm" onSubmit={handleSubmit}>
+      <FormContainer
+        id="checkoutForm"
+        onSubmit={handleSubmit(handlePurchaseData)}
+      >
         <AddressContainer>
           <div>
             <MapPinLine size={24} />
@@ -45,14 +52,14 @@ export const Checkout = () => {
             </div>
           </div>
           <InputTextContainer>
-            <input placeholder="CEP" />
-            <input placeholder="Rua" />
-            <input placeholder="Número" />
-            <input placeholder="Complemento" />
-            <input placeholder="Bairro" />
+            <input placeholder="CEP" {...register("CEP")} />
+            <input placeholder="Rua" {...register("rua")} />
+            <input placeholder="Número" {...register("numero")} />
+            <input placeholder="Complemento" {...register("complemento")} />
+            <input placeholder="Bairro" {...register("bairro")} />
             <div>
-              <input placeholder="Cidade" />
-              <input placeholder="UF" />
+              <input placeholder="Cidade" {...register("cidade")} />
+              <input placeholder="UF" {...register("uf")} />
             </div>
           </InputTextContainer>
         </AddressContainer>
@@ -66,30 +73,30 @@ export const Checkout = () => {
           </div>
           <div>
             <input
-              name="paymentMethods"
               type="radio"
               value="creditCard"
               id="creditCard"
+              {...register("paymentMethods")}
             />
             <label htmlFor="creditCard">
               <CreditCard size={24} />
               Cartão de crédito
             </label>
             <input
-              name="paymentMethods"
               type="radio"
               value="debitCard"
               id="debitCard"
+              {...register("paymentMethods")}
             />
             <label htmlFor="debitCard">
               <Bank size={24} />
               Cartão de débito
             </label>
             <input
-              name="paymentMethods"
               type="radio"
               value="money"
               id="money"
+              {...register("money")}
             />
             <label htmlFor="money">
               <Money size={24} />
