@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { CartContext } from "../../contexts/CartContext";
 import { Checkout } from "./Checkout";
 import { Sucess } from "./Success";
 
@@ -15,6 +16,11 @@ export interface CartPurchaseProps {
 
 export const Cart = () => {
   const [purchaseData, setPurchaseData] = useState<CartPurchaseProps>();
+  const { setOnCart } = useContext(CartContext);
+
+  useEffect(() => {
+    purchaseData && setOnCart([]);
+  }, [purchaseData]);
 
   return (
     <>

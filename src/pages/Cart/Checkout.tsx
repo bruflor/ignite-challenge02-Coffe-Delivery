@@ -28,9 +28,6 @@ export const Checkout = ({ setPurchaseData }: CheckoutProps) => {
   const { onCart } = useContext(CartContext);
   const { register, handleSubmit } = useForm();
 
-  //TODO: Button "confirmar pedido" as submit form
-  //TODO: onSubmit change main page for sucess page and pass data to that
-
   const sumPrices = onCart.reduce((accumulator, object) => {
     return accumulator + object.priceTotal;
   }, 0);
