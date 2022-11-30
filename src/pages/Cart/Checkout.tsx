@@ -5,7 +5,7 @@ import {
   Money,
   CreditCard,
 } from "phosphor-react";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { CartCard } from "../../components/Cards/cartCard";
 import { CartContext } from "../../contexts/CartContext";
 import { useForm } from "react-hook-form";
@@ -18,10 +18,14 @@ import {
   AddressContainer,
   InputTextContainer,
 } from "./style";
+import { CartPurchaseProps } from ".";
 
-export const Checkout = () => {
+interface CheckoutProps {
+  setPurchaseData: (inputData: CartPurchaseProps) => void;
+}
+
+export const Checkout = ({ setPurchaseData }: CheckoutProps) => {
   const { onCart } = useContext(CartContext);
-  const [purchaseData, setPurchaseData] = useState({});
   const { register, handleSubmit } = useForm();
 
   //TODO: Button "confirmar pedido" as submit form
@@ -34,7 +38,7 @@ export const Checkout = () => {
   const deliveryPrice = 3.5;
 
   function handlePurchaseData(data: any) {
-    console.log(data);
+    setPurchaseData(data);
   }
 
   return (
@@ -96,7 +100,7 @@ export const Checkout = () => {
               type="radio"
               value="money"
               id="money"
-              {...register("money")}
+              {...register("paymentMethods")}
             />
             <label htmlFor="money">
               <Money size={24} />

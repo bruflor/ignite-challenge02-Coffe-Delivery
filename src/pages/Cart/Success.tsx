@@ -1,9 +1,14 @@
 import { MapPin, Timer, CurrencyDollar } from "phosphor-react";
+import { CartPurchaseProps } from ".";
 import DeliveryImg from "../../assets/delivery.png";
 import { BannerBullets } from "../../components/Banner/style";
 import { SucessContainer, DetailDeliveryContainer } from "./style";
 
-export const Sucess = () => {
+interface SucessProps {
+  purchaseData: CartPurchaseProps;
+}
+
+export const Sucess = ({ purchaseData }: SucessProps) => {
   return (
     <SucessContainer>
       <div>
@@ -17,7 +22,7 @@ export const Sucess = () => {
               </BannerBullets>
               <div>
                 <p>
-                  Entrega em: <b>RUA</b>
+                  Entrega em: <b>{purchaseData.rua}</b>
                 </p>
                 <p>Farrapos - Porto Alegre, RS</p>
               </div>
