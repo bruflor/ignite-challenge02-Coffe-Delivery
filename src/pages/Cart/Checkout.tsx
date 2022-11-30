@@ -78,7 +78,7 @@ export const Checkout = ({ setPurchaseData }: CheckoutProps) => {
           <div>
             <input
               type="radio"
-              value="creditCard"
+              value="Cartão de crédito"
               id="creditCard"
               {...register("paymentMethods")}
             />
@@ -88,7 +88,7 @@ export const Checkout = ({ setPurchaseData }: CheckoutProps) => {
             </label>
             <input
               type="radio"
-              value="debitCard"
+              value="Cartão de débito"
               id="debitCard"
               {...register("paymentMethods")}
             />
@@ -98,7 +98,7 @@ export const Checkout = ({ setPurchaseData }: CheckoutProps) => {
             </label>
             <input
               type="radio"
-              value="money"
+              value="Dinheiro"
               id="money"
               {...register("paymentMethods")}
             />

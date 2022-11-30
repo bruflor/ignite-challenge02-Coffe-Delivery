@@ -22,9 +22,15 @@ export const Sucess = ({ purchaseData }: SucessProps) => {
               </BannerBullets>
               <div>
                 <p>
-                  Entrega em: <b>{purchaseData.rua}</b>
+                  Entrega em:{" "}
+                  <b>
+                    {purchaseData.rua}, {purchaseData.numero}
+                  </b>
                 </p>
-                <p>Farrapos - Porto Alegre, RS</p>
+                <p>
+                  {purchaseData.bairro} - {purchaseData.cidade},{" "}
+                  {purchaseData.uf}
+                </p>
               </div>
             </div>
             <div>
@@ -45,7 +51,7 @@ export const Sucess = ({ purchaseData }: SucessProps) => {
               <div>
                 <p>Pagamento na entrega</p>
                 <p>
-                  <b>Cartão de Crédito</b>
+                  <b>{purchaseData.paymentMethods}</b>
                 </p>
               </div>
             </div>
