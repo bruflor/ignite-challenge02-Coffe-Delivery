@@ -9,6 +9,8 @@ import { useContext } from "react";
 import { CartCard } from "../../components/Cards/cartCard";
 import { CartContext } from "../../contexts/CartContext";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as zod from "zod";
 
 import {
   CartPageContainer,
@@ -26,9 +28,25 @@ interface CheckoutProps {
 
 //TODO: Validation form with ZOD and done!
 
+const OnCartFormValidationSchema = zod.object({
+  CEP: zod
+    .number()
+    .min(8, "informe seu CEP")
+    .max(8, "Digite o CEP corretamente"),
+  bairro: zod.string().min(4, "informe o bairro"),
+  cidade: zod.string().min(1, "informe a cidade"),
+  complemento: zod.string().optional(),
+  numero: zod.number().min(1, "informe o número"),
+  paymentMethods: zod.string().min(1, "Selecione um método de pagamento"),
+  rua: zod.string().min(1, "informe a rua"),
+  uf: zod.string().min(1, "informe o estado"),
+});
+
 export const Checkout = ({ setPurchaseData }: CheckoutProps) => {
   const { onCart } = useContext(CartContext);
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState } = useForm({
+    resolver: zodResolver(OnCartFormValidationSchema),
+  });
 
   const sumPrices = onCart.reduce((accumulator, object) => {
     return accumulator + object.priceTotal;
@@ -36,6 +54,7 @@ export const Checkout = ({ setPurchaseData }: CheckoutProps) => {
 
   const deliveryPrice = 3.5;
 
+  console.log(formState.errors);
   function handlePurchaseData(data: any) {
     setPurchaseData(data);
   }
