@@ -24,7 +24,7 @@ interface CheckoutProps {
   setPurchaseData: (inputData: CartPurchaseProps) => void;
 }
 
-//TODO: Validation form and done!
+//TODO: Validation form with ZOD and done!
 
 export const Checkout = ({ setPurchaseData }: CheckoutProps) => {
   const { onCart } = useContext(CartContext);
