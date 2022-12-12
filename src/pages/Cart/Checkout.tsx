@@ -45,7 +45,7 @@ const OnCartFormValidationSchema = zod.object({
 export const Checkout = ({ setPurchaseData }: CheckoutProps) => {
   const { onCart } = useContext(CartContext);
   const { register, handleSubmit, formState } = useForm({
-    resolver: zodResolver(OnCartFormValidationSchema),
+    // resolver: zodResolver(OnCartFormValidationSchema),
   });
 
   const sumPrices = onCart.reduce((accumulator, object) => {
@@ -73,14 +73,14 @@ export const Checkout = ({ setPurchaseData }: CheckoutProps) => {
             </div>
           </div>
           <InputTextContainer>
-            <input placeholder="CEP" {...register("CEP")} required />
-            <input placeholder="Rua" {...register("rua")} required />
-            <input placeholder="Número" {...register("numero")} required />
+            <input placeholder="CEP" {...register("CEP")} />
+            <input placeholder="Rua" {...register("rua")} />
+            <input placeholder="Número" {...register("numero")} />
             <input placeholder="Complemento" {...register("complemento")} />
-            <input placeholder="Bairro" {...register("bairro")} required />
+            <input placeholder="Bairro" {...register("bairro")} />
             <div>
-              <input placeholder="Cidade" {...register("cidade")} required />
-              <input placeholder="UF" {...register("uf")} required />
+              <input placeholder="Cidade" {...register("cidade")} />
+              <input placeholder="UF" {...register("uf")} />
             </div>
           </InputTextContainer>
         </AddressContainer>

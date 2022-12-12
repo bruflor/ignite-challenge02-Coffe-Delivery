@@ -17,7 +17,7 @@ export interface CartPurchaseProps {
 export const Cart = () => {
   const [purchaseData, setPurchaseData] = useState<CartPurchaseProps>();
   const { setOnCart } = useContext(CartContext);
-
+  console.log(purchaseData);
   useEffect(() => {
     purchaseData && setOnCart([]);
   }, [purchaseData]);

@@ -71,6 +71,18 @@ export const InputTextContainer = styled.div`
       width: 30%;
     }
   }
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     > div {
