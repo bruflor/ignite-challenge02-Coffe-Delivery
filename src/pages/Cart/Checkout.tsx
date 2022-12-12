@@ -54,7 +54,6 @@ export const Checkout = ({ setPurchaseData }: CheckoutProps) => {
 
   const deliveryPrice = 3.5;
 
-  console.log(formState.errors);
   function handlePurchaseData(data: any) {
     setPurchaseData(data);
   }
@@ -74,14 +73,14 @@ export const Checkout = ({ setPurchaseData }: CheckoutProps) => {
             </div>
           </div>
           <InputTextContainer>
-            <input placeholder="CEP" {...register("CEP")} />
-            <input placeholder="Rua" {...register("rua")} />
-            <input placeholder="Número" {...register("numero")} />
+            <input placeholder="CEP" {...register("CEP")} required />
+            <input placeholder="Rua" {...register("rua")} required />
+            <input placeholder="Número" {...register("numero")} required />
             <input placeholder="Complemento" {...register("complemento")} />
-            <input placeholder="Bairro" {...register("bairro")} />
+            <input placeholder="Bairro" {...register("bairro")} required />
             <div>
-              <input placeholder="Cidade" {...register("cidade")} />
-              <input placeholder="UF" {...register("uf")} />
+              <input placeholder="Cidade" {...register("cidade")} required />
+              <input placeholder="UF" {...register("uf")} required />
             </div>
           </InputTextContainer>
         </AddressContainer>
