@@ -10,6 +10,7 @@ import { CartCard } from "../../components/Cards/cartCard";
 import { CartContext } from "../../contexts/CartContext";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 import {
   CartPageContainer,
@@ -25,26 +26,24 @@ interface CheckoutProps {
   setPurchaseData: (inputData: CartPurchaseProps) => void;
 }
 
-//TODO: Validation form with ZOD and done!
-
-// const OnCartFormValidationSchema = zod.object({
-//   CEP: zod
-//     .number()
-//     .min(8, "informe seu CEP")
-//     .max(8, "Digite o CEP corretamente"),
-//   bairro: zod.string().min(4, "informe o bairro"),
-//   cidade: zod.string().min(1, "informe a cidade"),
-//   complemento: zod.string().optional(),
-//   numero: zod.number().min(1, "informe o número"),
-//   paymentMethods: zod.string().min(1, "Selecione um método de pagamento"),
-//   rua: zod.string().min(1, "informe a rua"),
-//   uf: zod.string().min(1, "informe o estado"),
-// });
+const OnCartFormValidationSchema = yup.object({
+  CEP: yup
+    .number()
+    .min(8, "informe seu CEP")
+    .max(8, "Digite o CEP corretamente"),
+  bairro: yup.string().min(4, "informe o bairro"),
+  cidade: yup.string().min(1, "informe a cidade"),
+  complemento: yup.string().optional(),
+  numero: yup.number().min(1, "informe o número"),
+  paymentMethods: yup.string().min(1, "Selecione um método de pagamento"),
+  rua: yup.string().min(1, "informe a rua"),
+  uf: yup.string().min(1, "informe o estado"),
+});
 
 export const Checkout = ({ setPurchaseData }: CheckoutProps) => {
   const { onCart } = useContext(CartContext);
   const { register, handleSubmit, formState } = useForm({
-    // resolver: zodResolver(OnCartFormValidationSchema),
+    resolver: yupResolver(OnCartFormValidationSchema),
   });
 
   const sumPrices = onCart.reduce((accumulator, object) => {
