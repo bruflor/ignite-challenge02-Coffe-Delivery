@@ -29,15 +29,17 @@ interface CheckoutProps {
 const OnCartFormValidationSchema = yup.object({
   CEP: yup
     .number()
-    .min(8, "informe seu CEP")
-    .max(8, "Digite o CEP corretamente"),
-  bairro: yup.string().min(4, "informe o bairro"),
-  cidade: yup.string().min(1, "informe a cidade"),
-  complemento: yup.string().optional(),
-  numero: yup.number().min(1, "informe o número"),
-  paymentMethods: yup.string().min(1, "Selecione um método de pagamento"),
-  rua: yup.string().min(1, "informe a rua"),
-  uf: yup.string().min(1, "informe o estado"),
+    .min(10000000, "CEP contem 8 caracteres")
+    .max(99999999)
+    .required(),
+
+  // bairro: yup.string().min(4, "informe o bairro"),
+  // cidade: yup.string().min(1, "informe a cidade"),
+  // complemento: yup.string().optional(),
+  // numero: yup.number().min(1, "informe o número"),
+  // paymentMethods: yup.string().min(1, "Selecione um método de pagamento"),
+  // rua: yup.string().min(1, "informe a rua"),
+  // uf: yup.string().min(1, "informe o estado"),
 });
 
 export const Checkout = ({ setPurchaseData }: CheckoutProps) => {
