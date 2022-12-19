@@ -8,7 +8,7 @@ import {
 import { useContext } from "react";
 import { CartCard } from "../../components/Cards/cartCard";
 import { CartContext } from "../../contexts/CartContext";
-import { useForm } from "react-hook-form";
+import { useForm, useFormState } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
@@ -26,13 +26,8 @@ interface CheckoutProps {
   setPurchaseData: (inputData: CartPurchaseProps) => void;
 }
 
-const OnCartFormValidationSchema = yup.object({
-  CEP: yup
-    .number()
-    .min(10000000, "CEP contem 8 caracteres")
-    .max(99999999)
-    .required(),
-
+const OnCartFormValidationSchema = yup.object().shape({
+  CEP: yup.number().min(8).max(8).required("CEP is required"),
   // bairro: yup.string().min(4, "informe o bairro"),
   // cidade: yup.string().min(1, "informe a cidade"),
   // complemento: yup.string().optional(),
@@ -44,7 +39,11 @@ const OnCartFormValidationSchema = yup.object({
 
 export const Checkout = ({ setPurchaseData }: CheckoutProps) => {
   const { onCart } = useContext(CartContext);
-  const { register, handleSubmit, formState } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     resolver: yupResolver(OnCartFormValidationSchema),
   });
 
@@ -54,15 +53,17 @@ export const Checkout = ({ setPurchaseData }: CheckoutProps) => {
 
   const deliveryPrice = 3.5;
 
-  function handlePurchaseData(data: any) {
-    setPurchaseData(data);
-  }
-
+  const handleSubmitData = (data: any) => {
+    // const isValid = await OnCartFormValidationSchema.isValid(data);
+    console.log(data);
+    // setPurchaseData(data);
+  };
+  console.log(errors);
   return (
     <CartPageContainer>
       <FormContainer
         id="checkoutForm"
-        onSubmit={handleSubmit(handlePurchaseData)}
+        onSubmit={handleSubmit(handleSubmitData)}
       >
         <AddressContainer>
           <div>
@@ -74,13 +75,13 @@ export const Checkout = ({ setPurchaseData }: CheckoutProps) => {
           </div>
           <InputTextContainer>
             <input placeholder="CEP" {...register("CEP")} />
-            <input placeholder="Rua" {...register("rua")} />
-            <input placeholder="Número" {...register("numero")} />
-            <input placeholder="Complemento" {...register("complemento")} />
-            <input placeholder="Bairro" {...register("bairro")} />
+            <input placeholder="Rua" name="rua" />
+            <input placeholder="Número" name="numero" />
+            <input placeholder="Complemento" name="complemento" />
+            <input placeholder="Bairro" name="bairro" />
             <div>
-              <input placeholder="Cidade" {...register("cidade")} />
-              <input placeholder="UF" {...register("uf")} />
+              <input placeholder="Cidade" name="cidade" />
+              <input placeholder="UF" name="uf" />
             </div>
           </InputTextContainer>
         </AddressContainer>
