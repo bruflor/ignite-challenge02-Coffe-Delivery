@@ -26,7 +26,7 @@ interface CheckoutProps {
   setPurchaseData: (inputData: CartPurchaseProps) => void;
 }
 
-const OnCartFormValidationSchema = yup.object().shape({
+const OnCartFormValidationSchema = yup.object({
   CEP: yup.number().min(8).max(8).required("CEP is required"),
   // bairro: yup.string().min(4, "informe o bairro"),
   // cidade: yup.string().min(1, "informe a cidade"),
@@ -83,6 +83,7 @@ export const Checkout = ({ setPurchaseData }: CheckoutProps) => {
               <input placeholder="Cidade" name="cidade" />
               <input placeholder="UF" name="uf" />
             </div>
+            {/* <p>{errors.CEP?.message}</p> */}
           </InputTextContainer>
         </AddressContainer>
         <PaymentContainer>
