@@ -105,6 +105,10 @@ export const InputTextContainer = styled.div`
   }
 `;
 
+export const ErrorMessage = styled.span`
+  color: #ff6863;
+  font-weight: 700;
+`;
 export const PaymentContainer = styled.div`
   background: ${(props) => props.theme["base-card"]};
   padding: 2rem;

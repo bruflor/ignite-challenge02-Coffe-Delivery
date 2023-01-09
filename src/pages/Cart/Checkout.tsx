@@ -19,6 +19,7 @@ import {
   PaymentContainer,
   AddressContainer,
   InputTextContainer,
+  ErrorMessage,
 } from "./style";
 import { CartPurchaseProps } from ".";
 
@@ -83,8 +84,12 @@ export const Checkout = ({ setPurchaseData }: CheckoutProps) => {
               <input placeholder="Cidade" name="cidade" />
               <input placeholder="UF" name="uf" />
             </div>
-            {/* <p>{errors.CEP?.message}</p> */}
           </InputTextContainer>
+          {errors.CEP?.message ? (
+            <ErrorMessage>Por favor preencha os campos acima</ErrorMessage>
+          ) : (
+            ""
+          )}
         </AddressContainer>
         <PaymentContainer>
           <div>
