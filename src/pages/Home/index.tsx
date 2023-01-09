@@ -5,6 +5,9 @@ import { CartContext } from "../../contexts/CartContext";
 import { coffeMenu } from "../../mocks/coffeMenu";
 import { CoffeMenu } from "./style";
 
+//TODO: Add a "Adicionado no carrinho" return from press the button here and in checkout
+//TODO: Add a "Retirado no carrinho" return from press the button here and in checkout
+
 export const Home = () => {
   const { onCart, setOnCart } = useContext(CartContext);
 
