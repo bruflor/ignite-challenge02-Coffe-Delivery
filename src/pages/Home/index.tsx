@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BannerInfo } from "../../components/Banner";
 import { MenuCard } from "../../components/Cards/menuCard";
 import { CartContext } from "../../contexts/CartContext";
@@ -10,6 +10,18 @@ import { CoffeMenu } from "./style";
 
 export const Home = () => {
   const { onCart, setOnCart } = useContext(CartContext);
+  const [updatedCart, setUpdatedCart] = useState(false);
+
+  const modalCartUpdated = () => {
+    setUpdatedCart(true);
+    const toFalse = () => {
+      setUpdatedCart(false);
+      clearTimeout;
+    };
+    setTimeout(toFalse, 2000);
+
+    console.log("Updated");
+  };
 
   function onHandleAddToCart(newItemCart: any) {
     const onCartIdEqualToNew = onCart.filter((card) => {
@@ -18,6 +30,7 @@ export const Home = () => {
 
     if (onCart.length >= 1 && onCartIdEqualToNew.length <= 0) {
       setOnCart([...onCart, newItemCart]);
+      modalCartUpdated();
     } else if (onCart.length >= 1 && onCartIdEqualToNew.length >= 1) {
       const productsOnCart = [...onCart];
       const coffeIndexToUpdate = productsOnCart.findIndex(
@@ -25,14 +38,21 @@ export const Home = () => {
       );
       productsOnCart[coffeIndexToUpdate].amount = newItemCart.amount;
       setOnCart(productsOnCart);
+      modalCartUpdated();
     } else {
       setOnCart([newItemCart]);
+      modalCartUpdated();
     }
   }
 
   return (
     <main>
       <BannerInfo />
+      {updatedCart === true ? (
+        <div style={{ background: "red" }}>Carrinho atualizado</div>
+      ) : (
+        ""
+      )}
       <CoffeMenu>
         <h2>Nossos Cafés</h2>
         <div>
