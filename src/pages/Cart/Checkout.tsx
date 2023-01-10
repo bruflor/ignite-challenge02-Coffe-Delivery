@@ -28,14 +28,17 @@ interface CheckoutProps {
 }
 
 const OnCartFormValidationSchema = yup.object({
-  CEP: yup.number().min(8).max(8).required("CEP is required"),
-  // bairro: yup.string().min(4, "informe o bairro"),
-  // cidade: yup.string().min(1, "informe a cidade"),
-  // complemento: yup.string().optional(),
-  // numero: yup.number().min(1, "informe o número"),
-  // paymentMethods: yup.string().min(1, "Selecione um método de pagamento"),
-  // rua: yup.string().min(1, "informe a rua"),
-  // uf: yup.string().min(1, "informe o estado"),
+  CEP: yup.number().required("CEP is required"),
+  bairro: yup.string().required(),
+  cidade: yup.string().required(),
+  complemento: yup.string().optional(),
+  numero: yup.number().required(),
+  paymentMethods: yup
+    .string()
+    .min(1, "Selecione um método de pagamento")
+    .required(),
+  rua: yup.string().required(),
+  uf: yup.string().required(),
 });
 
 export const Checkout = ({ setPurchaseData }: CheckoutProps) => {
@@ -56,10 +59,10 @@ export const Checkout = ({ setPurchaseData }: CheckoutProps) => {
 
   const handleSubmitData = (data: any) => {
     // const isValid = await OnCartFormValidationSchema.isValid(data);
-    console.log(data);
-    // setPurchaseData(data);
+    // console.log(data);
+    setPurchaseData(data);
   };
-  console.log(errors);
+
   return (
     <CartPageContainer>
       <FormContainer
@@ -74,31 +77,42 @@ export const Checkout = ({ setPurchaseData }: CheckoutProps) => {
               <span>Informe o endereço onde deseja receber seu pedido</span>
             </div>
           </div>
-          <InputTextContainer>
-            <input placeholder="CEP" {...register("CEP")} />
-            <input placeholder="Rua" name="rua" />
-            <input placeholder="Número" name="numero" />
-            <input placeholder="Complemento" name="complemento" />
-            <input placeholder="Bairro" name="bairro" />
-            <div>
-              <input placeholder="Cidade" name="cidade" />
-              <input placeholder="UF" name="uf" />
-            </div>
-          </InputTextContainer>
-          {errors.CEP?.message ? (
-            <ErrorMessage>Por favor preencha os campos acima</ErrorMessage>
+          {errors.CEP?.message ||
+          errors.rua?.message ||
+          errors.numero?.message ||
+          errors.bairro?.message ||
+          errors.cidade?.message ||
+          errors.uf?.message ? (
+            <ErrorMessage>Verifique o endereço digitado</ErrorMessage>
           ) : (
             ""
           )}
+          <InputTextContainer>
+            <input placeholder="CEP*" {...register("CEP")} />
+            <input placeholder="Rua*" {...register("rua")} />
+            <input placeholder="Número*" {...register("numero")} />
+            <input placeholder="Complemento" {...register("complemento")} />
+            <input placeholder="Bairro*" {...register("bairro")} />
+            <div>
+              <input placeholder="Cidade*" {...register("cidade")} />
+              <input placeholder="UF*" {...register("uf")} />
+            </div>
+            <span style={{ color: "#8a8a8a" }}>*Campos obrigatórios</span>
+          </InputTextContainer>
         </AddressContainer>
         <PaymentContainer>
           <div>
             <CurrencyDollar size={24} />
             <div>
-              <h3>Endereço de Entrega</h3>
-              <span>Informe o endereço onde deseja receber seu pedido</span>
+              <h3>Método de pagamento</h3>
+              <span>Selecione um método de pagamento</span>
             </div>
           </div>
+          {errors.paymentMethods?.message ? (
+            <ErrorMessage>Selecione um método de pagamento</ErrorMessage>
+          ) : (
+            ""
+          )}
           <div>
             <input
               type="radio"
