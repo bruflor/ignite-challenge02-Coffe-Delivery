@@ -3,9 +3,11 @@ import { BannerInfo } from "../../components/Banner";
 import { MenuCard } from "../../components/Cards/menuCard";
 import { CartContext } from "../../contexts/CartContext";
 import { coffeMenu } from "../../mocks/coffeMenu";
-import { CoffeMenu } from "./style";
+import { CoffeMenu, ModalUpdatedCart } from "./style";
 
+//TODO: Criar portal react para o modal e context pra atualizar o state que mostra ou não o modal
 //TODO: Add a "Adicionado no carrinho" return from press the button here and in checkout
+
 //TODO: Add a "Retirado no carrinho" return from press the button here and in checkout
 
 export const Home = () => {
@@ -48,11 +50,6 @@ export const Home = () => {
   return (
     <main>
       <BannerInfo />
-      {updatedCart === true ? (
-        <div style={{ background: "red" }}>Carrinho atualizado</div>
-      ) : (
-        ""
-      )}
       <CoffeMenu>
         <h2>Nossos Cafés</h2>
         <div>
@@ -70,6 +67,11 @@ export const Home = () => {
             );
           })}
         </div>
+        {updatedCart === true ? (
+          <ModalUpdatedCart>Carrinho atualizado</ModalUpdatedCart>
+        ) : (
+          ""
+        )}
       </CoffeMenu>
     </main>
   );

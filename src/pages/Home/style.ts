@@ -22,3 +22,12 @@ export const CoffeMenu = styled.div`
     }
   }
 `;
+
+export const ModalUpdatedCart = styled.div`
+  z-index: 1;
+  display: absolute;
+  width: 240px;
+  top: 0;
+  left: 0;
+  background: red;
+`;
