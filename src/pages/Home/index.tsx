@@ -9,6 +9,9 @@ import { CoffeMenu, ModalUpdatedCart } from "./style";
 //TODO: Add a "Adicionado no carrinho" return from press the button here and in checkout
 
 //TODO: Add a "Retirado no carrinho" return from press the button here and in checkout
+//TODO? Teste de validação do form (exe: CEP deve conter 8 digitos)
+//TODO? Qualquer interação do usuario deve ser testada
+//TODO? testar variáveis de renderização do component. (ex: tags dos cards do café)
 
 export const Home = () => {
   const { onCart, setOnCart } = useContext(CartContext);
