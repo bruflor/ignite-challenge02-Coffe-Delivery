@@ -20,6 +20,7 @@ export const CartContext = createContext({} as CartContextType);
 
 export const CartContextProvider = ({ children }: CartContextProviderProps) => {
   const [onCart, setOnCart] = useState<CartProps[]>([]);
+  const [updatedCart, setUpdatedCart] = useState(false);
   return (
     <CartContext.Provider value={{ onCart, setOnCart }}>
       {children}
