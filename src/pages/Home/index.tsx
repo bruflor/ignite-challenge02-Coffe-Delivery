@@ -15,18 +15,6 @@ import { CoffeMenu, ModalUpdatedCart } from "./style";
 
 export const Home = () => {
   const { onCart, setOnCart } = useContext(CartContext);
-  const [updatedCart, setUpdatedCart] = useState(false);
-
-  const modalCartUpdated = () => {
-    setUpdatedCart(true);
-    const toFalse = () => {
-      setUpdatedCart(false);
-      clearTimeout;
-    };
-    setTimeout(toFalse, 2000);
-
-    console.log("Updated");
-  };
 
   function onHandleAddToCart(newItemCart: any) {
     const onCartIdEqualToNew = onCart.filter((card) => {
@@ -35,7 +23,6 @@ export const Home = () => {
 
     if (onCart.length >= 1 && onCartIdEqualToNew.length <= 0) {
       setOnCart([...onCart, newItemCart]);
-      modalCartUpdated();
     } else if (onCart.length >= 1 && onCartIdEqualToNew.length >= 1) {
       const productsOnCart = [...onCart];
       const coffeIndexToUpdate = productsOnCart.findIndex(
@@ -43,10 +30,8 @@ export const Home = () => {
       );
       productsOnCart[coffeIndexToUpdate].amount = newItemCart.amount;
       setOnCart(productsOnCart);
-      modalCartUpdated();
     } else {
       setOnCart([newItemCart]);
-      modalCartUpdated();
     }
   }
 
@@ -70,11 +55,6 @@ export const Home = () => {
             );
           })}
         </div>
-        {updatedCart === true ? (
-          <ModalUpdatedCart>Carrinho atualizado</ModalUpdatedCart>
-        ) : (
-          ""
-        )}
       </CoffeMenu>
     </main>
   );
