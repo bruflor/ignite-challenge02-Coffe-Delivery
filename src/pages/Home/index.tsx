@@ -1,9 +1,17 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { BannerInfo } from "../../components/Banner";
 import { MenuCard } from "../../components/Cards/menuCard";
 import { CartContext } from "../../contexts/CartContext";
 import { coffeMenu } from "../../mocks/coffeMenu";
-import { CoffeMenu } from "./style";
+import { CoffeMenu, ModalUpdatedCart } from "./style";
+
+//TODO: Criar portal react para o modal e context pra atualizar o state que mostra ou não o modal
+//TODO: Add a "Adicionado no carrinho" return from press the button here and in checkout
+
+//TODO: Add a "Retirado no carrinho" return from press the button here and in checkout
+//TODO? Teste de validação do form (exe: CEP deve conter 8 digitos)
+//TODO? Qualquer interação do usuario deve ser testada
+//TODO? testar variáveis de renderização do component. (ex: tags dos cards do café)
 
 export const Home = () => {
   const { onCart, setOnCart } = useContext(CartContext);
